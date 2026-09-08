@@ -515,7 +515,7 @@ def generate_xml_feed(matched_pairs):
         rating = review["rating"]
 
         mpn = product.get("mpn") or product.get("prom_id") or product.get("id", "")
-        brand = product.get("brand", "")
+        brand = product.get("brand") or "Без бренду"
         product_name = product.get("title", "")
         product_url = product.get("link", "")
 
@@ -533,10 +533,8 @@ def generate_xml_feed(matched_pairs):
             f"<ratings><overall min='1' max='5'>{rating}</overall></ratings>"
             f"<products><product><product_ids>"
             f"<mpns><mpn>{escape_xml(mpn)}</mpn></mpns>"
+            f"<brands><brand>{escape_xml(brand)}</brand></brands>"
         )
-
-        if brand:
-            line += f"<brands><brand>{escape_xml(brand)}</brand></brands>"
 
         line += (
             f"</product_ids>"
