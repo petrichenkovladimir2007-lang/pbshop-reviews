@@ -25,7 +25,7 @@ jobs:
 
       - run: mkdir -p ./public
 
-      - run: python3 pbshop_reviews_feed.py --mode moderation --output ./public/pbshop_reviews_feed.xml
+      - run: python3 pbshop_reviews_feed.py --mode full --output ./public/pbshop_reviews_feed.xml
 
       - uses: actions/upload-pages-artifact@v3
         with:
